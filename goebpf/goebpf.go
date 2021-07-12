@@ -44,6 +44,12 @@ func InitEbpf(handler EventHandler) error {
 	var ret C.int
 	ret = C.wrapper_ebpf_init(0)
 	var err error
+	fmt.Printf("flag flag falg\n")
+	if ret != 0 {
+		os.SetEnv("X_VMLINUX_PATH"，`/root/vmlinux`)
+		ret = C.wrapper_ebpf_init(0)
+	}
+
 	if ret != 0 {
 		err = fmt.Errorf("fail to init ebpf, %d \n", ret)
 		return err
