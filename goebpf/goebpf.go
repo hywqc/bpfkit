@@ -58,6 +58,7 @@ func FreeEbpf() {
 }
 
 func PollEvents(ctx context.Context, timeout int) {
+	fmt.Printf("start poll\n")
 	for {
 		select {
 		case <-ctx.Done():
