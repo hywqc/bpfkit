@@ -66,6 +66,6 @@ func PollEvents(ctx context.Context, timeout int) {
 		}
 		//time.Sleep(time.Millisecond * time.Duration(timeout))
 		C.ebpf_poll_event((C.int)(timeout))
-		fmt.Println("poll")
+		//fmt.Println("poll")
 	}
 }

@@ -1,16 +1,20 @@
 package main
 
 import (
-	"bpfkit/goebpf"
 	"context"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/hywqc/bpfkit/goebpf"
 )
 
 func handler(event goebpf.IEvent) {
+	if event == nil {
+		return
+	}
 	if event.Type() == goebpf.EVENTTYPE_PROCESS_EXIT {
 		evt := event.(*goebpf.EventProcessExit)
 		log.Printf("%s[%d]", evt.Comm, evt.Pid)
@@ -33,7 +37,7 @@ func main() {
 	}()
 
 	go func() {
-		goebpf.PollEvents(ctx, 2000)
+		goebpf.PollEvents(ctx, 1000)
 		goebpf.FreeEbpf()
 	}()
 
