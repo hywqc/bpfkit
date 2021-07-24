@@ -5,5 +5,5 @@ import (
 )
 
 func Pa1() {
-fmt.Println("pa1")
+fmt.Println("pa1-x")
 }
