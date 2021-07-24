@@ -1,5 +1,9 @@
 package pa
 
-func Pa1() {
+import (
+"fmt"
+)
 
+func Pa1() {
+fmt.Println("pa1")
 }
